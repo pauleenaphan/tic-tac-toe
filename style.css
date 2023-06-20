@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    /* vh means the elements willl be equal to 100% of the viewport height (100%) */
+    min-height: 100vh; 
+}
+
+.header{
+    padding: 3%;
+    background-color: yellow;
+}
+
+.body{
+    display: flex;
+    flex-grow: 1;
+    background-color: lightblue;
+    padding: 20%;
+}
+
+.board{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: purple;
+    font-size: 100px;
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+}
+
+.sqr{
+    text-align: center;
+    padding: 30px;
+}
+
+.footer{
+    padding: 2%;
+    background-color: pink;
+}

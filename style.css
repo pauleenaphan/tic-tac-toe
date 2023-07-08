@@ -16,6 +16,7 @@
 
 .body{
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     background-color: lightblue;
     padding: 10%;
@@ -39,6 +40,16 @@
     border-color: black;
 }
 
+#turn{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 40px;
+}
+
+#error{
+    font-size: 25px;
+    text-align: center;
+}
 .footer{
     padding: 2%;
     background-color: pink;

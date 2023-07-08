@@ -18,13 +18,14 @@
     display: flex;
     flex-grow: 1;
     background-color: lightblue;
-    padding: 20%;
+    padding: 10%;
 }
 
 .board{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: purple;
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: lightpink;
     font-size: 100px;
     margin: 0 auto;
     width: 500px;
@@ -33,7 +34,9 @@
 
 .sqr{
     text-align: center;
-    padding: 30px;
+    padding: 20px;
+    border-style: solid;
+    border-color: black;
 }
 
 .footer{

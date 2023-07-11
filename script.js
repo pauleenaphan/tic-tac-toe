@@ -4,19 +4,23 @@ let error = document.getElementById("error"); //sqr taken error
 let count = 0; //counts the number of player turns
 
 //module
-const createBoard = (()=>{
-    const board = [" 1" ," " ," " ," " ," " ," " ," " ," " ," "];
+const board = (()=>{
+    const gameboard = ["0" ,"1" ,"2" ,"3" ,"4" ,"5" ,"6" ,"7" ,"8"];
+    
 
     //generates the board 
-    for(let i = 0; i < board.length; i++){
+    for(let i = 0; i < gameboard.length; i++){
         let sqr = document.createElement('div');
         sqr.className = "sqr";
-        sqr.textContent = board[i];
+        sqr.textContent = gameboard[i];
         body[0].appendChild(sqr);
         sqr.addEventListener("click", play);
     }
 
-    return {board};
+    const updateSqr = (sqr, player) => (gameboard[sqr] = player);
+    
+
+    return {gameboard, updateSqr};
 })();
 
 
@@ -30,44 +34,56 @@ const player = (num, turn) =>{
 const playerOne = player(1, true);
 const playerTwo = player(2, false);
 
-console.log((createBoard.board)[0]);
+//gets index 0 of the board 
+
 
 function play(){  
     //rotate by player
     if(playerOne.turn == true){
         //need to check if sqr is taken 
-        if(this.innerHTML != " "){
+        if(this.innerHTML == "o"){
             error.innerHTML = "the square you chose is taken please chose another one";
         }
         //check if sqr is empty
-        if(this.innerHTML == " "){
+        if(this.innerHTML != "o"){
             //when the sqr is not empty the player will be able to place a x or o
             turnStatus.innerHTML = "Player 2's turn";
+            //console.log(board.gameboard.indexOf(this.innerHTML));
+            board.updateSqr(board.gameboard.indexOf(this.innerHTML), 'x');
+            //console.log("index: " + index);
             this.innerHTML = "x";
-            console.log((createBoard.board)[createBoard.board.indexOf(this.innerHTML)]);
             playerOne.turn = false;
             playerTwo.turn = true;
             error.innerHTML = " ";
+
+            checkBoard();
+            console.log(board.gameboard);
         }
     }else{
-        if(this.innerHTML != " "){
+        if(this.innerHTML == "x"){
             error.innerHTML = "the square you chose is taken please chose another one";
         }
-        if(this.innerHTML == " "){
+        if(this.innerHTML != "x"){
             turnStatus.innerHTML = "Player 1's turn";
             this.innerHTML = "o";
             playerTwo.turn = false;
             playerOne.turn = true;
             error.innerHTML = " ";
+
+            checkBoard();
         }
     }
-    count++;
-
-    // if(count == 9){
-    //     for(let i = 0; i <= 8; i++){
-    //         console.log((createBoard.board)[i]);
-    //     }
-    // }
-    //console.log(createBoard.board);
 }
 
+function checkBoard(){
+    console.log("checking board");
+    //checking horizontally
+    for(let i = 0; i < 9; i+=3){
+        console.log("board test" + ((board.gameboard)[i]) + ((board.gameboard)[1 + i]) + ((board.gameboard)[2 + i]));
+        console.log("check for matching values")
+        if((board.gameboard[i]) == (board.gameboard[1 + i]) == (board.gameboard[2 + i])){
+            console.log("player has won horizontally!")
+            break;
+        }
+    }
+}

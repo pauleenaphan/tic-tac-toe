@@ -79,11 +79,26 @@ function checkBoard(){
     console.log("checking board");
     //checking horizontally
     for(let i = 0; i < 9; i+=3){
-        console.log("board test" + ((board.gameboard)[i]) + ((board.gameboard)[1 + i]) + ((board.gameboard)[2 + i]));
-        console.log("check for matching values")
-        if((board.gameboard[i]) == (board.gameboard[1 + i]) == (board.gameboard[2 + i])){
-            console.log("player has won horizontally!")
+        //console.log("board test" + ((board.gameboard)[i]) + ((board.gameboard)[1 + i]) + ((board.gameboard)[2 + i]));
+        //console.log("check for matching values")
+        if((board.gameboard[i]) == (board.gameboard[1 + i]) && (board.gameboard[i]) == (board.gameboard[2 + i])){
+            console.log("player has won horizontally!");
             break;
         }
+    }
+
+    //checking vertically
+    for(let i = 0; i < 3; i++){
+        console.log("checking for matching values");
+        console.log("board test" + ((board.gameboard)[i]) + ((board.gameboard)[3 + i]) + ((board.gameboard)[6 + i]));
+        if((board.gameboard[i]) == (board.gameboard[3 + i]) && (board.gameboard[i]) == (board.gameboard[6 + i])){
+            console.log("player has won vertically!");
+            break;
+        }
+    }
+
+    //checking diagonally
+    if(((board.gameboard[0]) == (board.gameboard[4]) && (board.gameboard[0]) == (board.gameboard[8])) || ((board.gameboard[2]) == (board.gameboard[4]) && (board.gameboard[2]) == (board.gameboard[6]))){
+        console.log("player has won vertically ");
     }
 }

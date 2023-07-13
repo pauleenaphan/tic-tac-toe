@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: "Courier New", monospace;
 }
 
 .container{
@@ -10,34 +11,50 @@
 }
 
 .header{
-    padding: 3%;
-    background-color: yellow;
+    padding: 2%;
+    text-align: center;
+    background-color: lightgreen;
+    font-size: 70px;
+    font-weight: bold;
 }
 
 .body{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background-color: lightblue;
-    padding: 10%;
+    background-color: white;
+    padding: 5%;
+}
+
+#winmsg{
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 30px;
 }
 
 .board{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    background-color: lightpink;
+    background-color: lightgray;
     font-size: 100px;
     margin: 0 auto;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
 }
 
 .sqr{
     text-align: center;
-    padding: 20px;
+    padding: 7px;
     border-style: solid;
     border-color: black;
+    color:lightgray;
+}
+
+#rematch{
+    text-align: center;
+    font-size: 40px;
+    visibility: hidden;
 }
 
 #turn{
@@ -47,10 +64,14 @@
 }
 
 #error{
-    font-size: 25px;
     text-align: center;
+    font-size: 25px;
+    
 }
 .footer{
+    text-align: center;
     padding: 2%;
-    background-color: pink;
+    font-size: 25px;
+    background-color: lightgreen;
+    font-weight: bold;
 }

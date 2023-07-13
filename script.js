@@ -4,16 +4,15 @@ let error = document.getElementById("error"); //sqr taken error
 let winmsg = document.getElementById("winmsg"); //msg when a player wins
 let count = 0; //counts the number of player turns
 let rematch = document.getElementById("rematch"); //rematch button
-let sqrs = document.querySelector("board");
+
 
 
 //module
 const board = (()=>{
     const gameboard = ["0" ,"1" ,"2" ,"3" ,"4" ,"5" ,"6" ,"7" ,"8"];
-    
     //generates the board 
     for(let i = 0; i < gameboard.length; i++){
-        let sqr = document.createElement('div');
+        var sqr = document.createElement('div');
         sqr.className = "sqr";
         sqr.textContent = gameboard[i];
         body[0].appendChild(sqr);
@@ -21,10 +20,12 @@ const board = (()=>{
     }
 
     const updateSqr = (sqr, player) => (gameboard[sqr] = player);
+    const resetBoard = (index) => (gameboard[index] = index);
 
-    return {gameboard, updateSqr};
+    return {gameboard, updateSqr, resetBoard};
 })();
-
+// let sqrs = document.querySelectorAll("sqr");
+//let sqrs = document.getElementsByClassName("sqr")[0];
 
 //factories
 const player = (num, turn) =>{
@@ -39,17 +40,23 @@ const playerTwo = player(2, false);
 rematch.addEventListener("click", display);
 
 function display(){
-    //clear the board
-    for(let i = 0; i < 9; i++){
-        (board.gameboard[i]) = i;
-    }
-    //now remove rematch button anymore
     rematch.style.visibility = "hidden";
-    console.log(board.gameboard);
+    
+    //change values to light pink so that it "clears the board"
     for(let i = 0; i < 9; i++){
-        //console.log(body[i]);
-        sqrs.style.color = "lightpink";
+        document.getElementsByClassName("sqr")[i].style.color = "white";
+        document.getElementsByClassName("sqr")[i].innerHTML = i;
+        board.resetBoard(i.toString());
     }
+
+    winmsg.innerHTML = ("Game in Progress");
+
+    //reset the count so that it does not transfer onto the next turn
+    count = 0;
+    turnStatus.innerHTML = "Player 2's turn";
+    //reset the player turn so that player one always goes first
+    playerOne.turn = true;
+    playerTwo.turn = false;
 }
 
 

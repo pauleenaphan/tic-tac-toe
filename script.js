@@ -44,7 +44,7 @@ function display(){
     
     //change values to light pink so that it "clears the board"
     for(let i = 0; i < 9; i++){
-        document.getElementsByClassName("sqr")[i].style.color = "white";
+        document.getElementsByClassName("sqr")[i].style.color = "lightpink";
         document.getElementsByClassName("sqr")[i].innerHTML = i;
         board.resetBoard(i.toString());
     }
